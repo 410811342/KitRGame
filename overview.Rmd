@@ -1,0 +1,102 @@
+---
+title: '**各個國家的YouTube使用者喜歡什麼類型的片片?**'
+author: "狗狗統軟特攻隊 (鄒嘉霖、廖廣筑、李郁青)"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+------------------------------------------------------------------------
+
+<center>
+
+![Video Category](https://i.ytimg.com/vi/pVsGz1P1RjI/maxresdefault.jpg?format=1000w){width="90%"}
+
+</center>
+
+------------------------------------------------------------------------
+
+#### **Context**
+
+-   Main question
+-   Data
+-   EDA
+
+------------------------------------------------------------------------
+
+### **Main Question**
+
+-   不同國家間，YouTube什麼類別的影片最易竄升。
+-   進一步將類別分群為易竄、普通、不易竄升。
+
+#### Role
+
+-   Becoming a YouTuber
+-   YouTuber
+
+#### Importance
+
+-   如果你想成為YouTuber，並希望能較快獲得流量，可以透過我們的分析，選擇影片主題。
+-   如果你已經是一位YouTuber，可以了解時下流行趨勢，選擇轉型。
+
+------------------------------------------------------------------------
+
+### **Data**
+
+#### From
+
+-   [YouTube](https://www.youtube.com/feed/trending)
+
+#### Variables
+
+-   filename
+-   video id
+-   trend date : The date of collecting data
+-   category id : The id of category of video
+
+#### 發燒影片
+
+-   該地區當日點擊率最多的影片
+
+#### Location
+
+-   US、MX、KR、JP、IN、FR、DE、GB、TW
+
+#### Preview data
+
+```{r echo = FALSE}
+ 
+head(read.table(file = "1024.txt",
+           sep = "\t")) 
+ 
+```
+
+The most popular video in RU at 10/24/2022.
+
+#### 關聯性
+
+-   蒐集所有每日發燒影片及其標籤ID
+
+#### 限制性
+
+-   無法確切得知成為發燒影片的門檻
+
+------------------------------------------------------------------------
+
+### **EDA**
+
+#### 分析方法
+
+-   週期: Nov、Dec, 2022.
+-   方法: 累計標籤下影片成為發燒影片的次數
+-   比較: 不同地區的趨勢標籤、同地區不同月份的趨勢標籤是否改變
+
+------------------------------------------------------------------------
+
+### **Problem**
+
+-   做這項分析時，我們其實預設了以下立場: 某標籤發燒影片越多，則該標籤的影片都將較受使用者喜愛，因此使用者喜歡看此類影片。然而這因果是否真有如此自然呢?有沒有可能只是因為該標籤知名YouTuber較多呢?
+
+### **Reference**
+
+-   [Scraper from GitHub](https://github.com/mitchelljy/Trending-YouTube-Scraper)
